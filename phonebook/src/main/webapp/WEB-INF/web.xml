@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         id="WebApp_ID" version="3.1">
+    <error-page>
+        <error-code>400</error-code>
+        <location>/WEB-INF/jsp/errorPage.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/errors/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>405</error-code>
+        <location>/WEB-INF/jsp/errors/405.jsp</location>
+    </error-page>
+    <servlet>
+        <servlet-name>getInformation</servlet-name>
+        <servlet-class>org.rw.phonebook.servlet.GetInformation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getInformation</servlet-name>
+        <url-pattern>/getInformation/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                /WEB-INF/spring/webcontext/DispatcherServlet-context.xml
+            </param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <listener>
+        <listener-class>
+            org.quartz.ee.servlet.QuartzInitializerListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>
+            org.rw.phonebook.functions.InitListener
+        </listener-class>
+    </listener>
+
+    <!-- <servlet>
+      <servlet-name>RestartEmailingService</servlet-name>
+      <servlet-class>org.rw.phonebook.functions.RestartEmailingService</servlet-class>
+      <load-on-startup>1</load-on-startup>
+  </servlet> -->
+</web-app>

@@ -1,0 +1,29 @@
+<div class="list-group-item clearfix">
+    <h4 class="list-group-item-heading">{{info.firstName}}
+        {{info.lastName}}</h4>
+    <div class="list-group-item-text">
+        {{info.phoneNumber}}
+        <div class="pull-right">
+            <form action="edit-user" class="ctrls" method="post">
+                <input name="uid" type="hidden" value="{{info.userId}}">
+                <button class="btn btn-default" type="submit">
+                    <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+                </button>
+            </form>
+            <form action="deleteUser" class="ctrls"
+                  method="post" onsubmit="return confirmDelUser()">
+                <input name="uid" type="hidden" value="{{info.userId}}">
+                <button class="btn btn-default" type="submit">
+                    <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
+                </button>
+            </form>
+            <form action="email-scheduling" class="ctrls" method="post">
+                <input name="uid" type="hidden" value="{{info.userId}}">
+                <button class="btn btn-default" type="submit">
+					<span aria-hidden="true" class="glyphicon glyphicon-calendar"
+                          title="Email Scheduling"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
